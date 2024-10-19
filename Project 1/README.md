@@ -30,7 +30,7 @@ To ensure that all dependencies are managed properly, it is recommended to use a
    ```
 3. Activate the virtual environment:
    ```bash
-   .\env\Scripts\activate
+   env/Scripts/activate
    ```
 
 #### For Mac/Linux:
