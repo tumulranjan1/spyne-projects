@@ -81,11 +81,14 @@ def pad_and_shift_shadow_mask(car_mask, shadow_mask, shift_down=0):
 
     return padded_shadow_mask
 
+
 # Parameter to control manual top padding for the shadow mask
 extra_top_padding = 50  # Shift the shadow mask down by this value
 
+
 # Parameter for shadow offset during placement
 shadow_offset_y = 30  # Shift the shadow further down by 30 pixels during placement
+
 
 # Loop through all car images and masks
 for car_image_filename in os.listdir(car_images_folder):
@@ -126,7 +129,7 @@ for car_image_filename in os.listdir(car_images_folder):
             # Step 6: Extract the shadow from the car image using the shadow mask
             car_img_np_resized = np.array(resized_car_img)
             shadow_img_np = np.zeros_like(car_img_np_resized)
-            shadow_img_np[..., 3] = resized_shadow_mask  # Set alpha channel using the shadow mask
+            shadow_img_np[..., 3] = resized_shadow_mask
             
             # Create shadow image by extracting shadow pixels from car
             shadow_img_np[..., :3] = car_img_np_resized[..., :3] * (resized_shadow_mask[..., None] / 255)
@@ -138,7 +141,7 @@ for car_image_filename in os.listdir(car_images_folder):
             car_position_y = floor_start_y - new_car_height
             
             # Adjust the shadow to be beneath the car with an extra offset during placement
-            shadow_position_y = car_position_y + int(new_car_height * 0.1) + shadow_offset_y  # Add shadow_offset_y
+            shadow_position_y = car_position_y + int(new_car_height * 0.1) + shadow_offset_y
             
             # Paste shadow first
             final_img.paste(shadow_img, (car_position_x, shadow_position_y), shadow_img)
