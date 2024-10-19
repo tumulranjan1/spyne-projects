@@ -70,7 +70,7 @@ Ensure that you have the following directories and files in your project folder:
 Once the environment is set up and the required images are in place, you can run the script using:
 
 ```bash
-python project1.py
+python app.py
 ```
 
 The processed car images with backgrounds and shadows will be saved in the `./output` folder.
